@@ -159,15 +159,62 @@ function gradeCalc(mark) {
 //Create a function that counts the number of vowels within a string. It should handle both capitalized and uncapitalized vowels.
 // Hint - you may need to study tomorrow's traning kit on arrays 
 // try looking up the .includes() method
-
-
-
-
+function vowelCount(word) {
+    let count = 0;
+    for(let i = 0; i < word.length; i++) {
+        if(word[i] === 'a' || word[i] === 'e' || word[i] === 'i' || word[i] === 'o' || word[i] === 'u') {
+            count++;
+        }
+    }
+    return count;
+}
 
 /************************************************************** Stretch **************************************************************/
 //Take Rock, Paper, Sissors further
 //update your rock papers sissors code below to take a prompt from a user using the window object
+function rockPaperScissorsToo() {
+    // stores random number 0-2 as computer's choice
+    compChoice = Math.floor(Math.random() * 3);
+    // we will count 0 as rock, 1 as paper, 2 as scissors
 
+    /*
+    rock beats scissors
+    scissors beats paper
+    paper beats rock
+
+    0 beats 2
+    1 beats 0
+    2 beats 1
+    */
+
+    let userChoice = prompt("enter rock, paper, or scissors", "choice");
+
+    if(userChoice === "rock") {
+        if(compChoice === 0) {
+            return "tie";
+        } else if(compChoice === 1) {
+            return "computer wins";
+        } else {
+            return "user wins"
+        }
+    } else if(userChoice === "paper") {
+        if(compChoice === 0) {
+            return "user wins";
+        } else if(compChoice === 1) {
+            return "tie";
+        } else {
+            return "computer wins"
+        }
+    } else if(userChoice === "scissors") {
+        if(compChoice === 0) {
+            return "computer wins";
+        } else if(compChoice === 1) {
+            return "user wins";
+        } else {
+            return "tie"
+        }
+    } else return "incorrect parameter";
+}
 
 
 
