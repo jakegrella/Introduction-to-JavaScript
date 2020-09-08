@@ -1,35 +1,31 @@
 /************************************************************** Task 1: Warm-up! **************************************************************/
 //Task a: declare a variable called votingAge, console log true if age > 18 (no function required)
-
-
-
-
+let votingAge = 18;
+if(age > 18){
+    console.log(true);
+}
 
 //Task b: declare a variable and then use a conditional to change the value of that variable based on the value assigned to a second variable (no function required)
-
-
-
-
+let x = 1;
+let y = 10;
+if(x < y) {
+    x++;
+}
 
 //Task c: Convert string ("1999") to integer (1999)  (no function required) // hint look up the Number method
-
-
-
-
+Number("1999");
 
 //Task d: Write a function to multiply a*b 
-
-
-
-
+function multiply(a, b) {
+    return a*b;
+}
 
 /************************************************************** Task 2 **************************************************************/
 //Age in Dog years
 //write a function that takes your age and returns it to you in dog years - they say that 1 human year is equal to seven dog years 
-
-
-
-
+function dogYears(yourAge) {
+    return yourAge*7;
+}
 
 /************************************************************** Task 3 **************************************************************/
 //Dog feeder 
@@ -48,10 +44,30 @@
 // 7 - 12 months 4% of their body weight
 
 // when you are finished invoke your function with the weight of 15 lbs and the age of 1 year - if your calculations are correct your result should be 0.44999999999999996
-  
 
+function dogFeeder(weight, age) {
+    if(age >= 1){
+        if(weight <= 5){
+            return weight*0.05;
+        } else if(weight > 5 && weight <= 10) {
+            return weight*0.04;
+        } else if(weight > 10 && weight <= 15) {
+            return weight*0.03;
+        } else {
+            return weight*0.02;
+        }
+    } else {
+        if(age > (2/12) && age <= (4/12)) {
+            return weight*0.1;
+        } else if(age > (4/12) && age <= (7/12)) {
+            return weight*0.05;
+        } else if(age > (7/12) && age < (12/12)) {
+            return weight*0.04;
+        }
+    }
+}
 
-
+dogFeeder(15, 1);
 
 /************************************************************** Task 4 **************************************************************/
 // Rock, Paper, Sissors
@@ -59,32 +75,69 @@
 // it should return you won or you lost based on the rules of the game (you may need to look up the rules if you have not played before)
 // use math.random to determine the computers choice 
 // hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
+function rockPaperScissors(userChoice) {
+    // stores random number 0-2 as computer's choice
+    compChoice = Math.floor(Math.random() * 3);
+    // we will count 0 as rock, 1 as paper, 2 as scissors
 
-  
-  
+    /*
+    rock beats scissors
+    scissors beats paper
+    paper beats rock
 
+    0 beats 2
+    1 beats 0
+    2 beats 1
+    */
+
+    if(userChoice === "rock") {
+        if(compChoice === 0) {
+            return "tie";
+        } else if(compChoice === 1) {
+            return "computer wins";
+        } else {
+            return "user wins"
+        }
+    } else if(userChoice === "paper") {
+        if(compChoice === 0) {
+            return "user wins";
+        } else if(compChoice === 1) {
+            return "tie";
+        } else {
+            return "computer wins"
+        }
+    } else if(userChoice === "scissors") {
+        if(compChoice === 0) {
+            return "computer wins";
+        } else if(compChoice === 1) {
+            return "user wins";
+        } else {
+            return "tie"
+        }
+    } else return "incorrect parameter";
+}
+  
 /************************************************************** Task 5 **************************************************************/
 //Metric Converter
 //a. KM to Miles - should take the number of kilometers and convert it to the equal number of miles
-
-
-
-
+function kmToMiles(km) {
+    return km*0.621371;
+}
 
 //b. Feet to CM - should take the number of feet and convert it to the equal number of centimeters
-  
-
-
-
+function feetToCm(feet) {
+    return feet*30.48;
+}
 
 /************************************************************** Task 6 **************************************************************/
 // 99 bottles of soda on the wall
 // create a function called annoyingSong
 // the function should take a starting number as an argument and count down - at each iteration it should log (number) bottles of soda on the wall, (number) bottles of soda, take one down pass it around (number left over) bottles of soda on the wall`
-  
-
-
-
+function annoyingSong(startNum) {
+    for(i=startNum; i >= 0; i--) {
+        console.log(i + " bottles of soda on the wall, " + i + " bottles of soda, take one down pass it around " + i + " bottles of soda on the wall");
+    }
+}
 
 /************************************************************** Task 7 **************************************************************/
 //Grade Calculator
@@ -94,10 +147,13 @@
 //70s should be Cs 
 //60s should be D 
 //and anything below 60 should be F
-  
-
-  
-  
+function gradeCalc(mark) {
+    if(mark >= 90) return "A";
+    else if(mark >= 80) return "B";
+    else if(mark >= 70) return "C";
+    else if(mark >= 60) return "D";
+    else return "F";
+}
 
 /************************************************************** Stretch **************************************************************/
 //Create a function that counts the number of vowels within a string. It should handle both capitalized and uncapitalized vowels.
